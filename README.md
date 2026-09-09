@@ -29,4 +29,24 @@ de percorrer todo o array.
 **Conceitos:** `let` vs `const`, laço `for`, operador `%`, comparação
 `===`, acumulador.
 
-### 02 - conta maiores 
+### 02 — Conta números maiores que um limite
+
+Recebe um array de números e um limite, e devolve quantos números do
+array são maiores que esse limite.
+
+contaMaiores([1, 5, 8, 3, 10], 4) → 3
+contaMaiores([1, 2, 3], 10) → 0
+contaMaiores([], 5) → 0
+
+
+**Solução:** mesma estrutura do exercício anterior, com duas diferenças.
+A função recebe dois parâmetros, e o acumulador funciona como contador:
+soma 1 a cada número que passa na condição, em vez de somar o valor do
+número. A condição usa o operador `>` comparando o item atual com o
+limite.
+
+Com array vazio, `numeros.length` é 0 e a condição do `for` já começa
+falsa, então o loop não executa nenhuma vez e a função devolve 0.
+
+**Conceitos:** múltiplos parâmetros, contador vs. somador, operador `>`,
+caso de borda com array vazio.
