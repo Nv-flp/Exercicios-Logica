@@ -1,52 +1,77 @@
-# Exercicios-Logica
-
 # Exercícios de Lógica
 
-Exercícios de lógica de programação em JavaScript, resolvidos manualmente
-para consolidar fundamentos. Sem uso de métodos prontos de array nas
-primeiras fases — a ideia é entender o funcionamento antes de abstrair.
+Exercícios de lógica em JavaScript, resolvidos manualmente, sem métodos
+prontos de array. Objetivo: consolidar fundamentos antes de partir para
+abstrações.
 
-Executado com Node.js:
-
-    node fase-1/01-soma-pares.js
+Executar: `node fase-1/01-soma-pares.js`
 
 ## Fase 1 — Variáveis, condicionais e loops
 
-### 01 — Soma dos números pares
+| # | Exercício | Conceitos |
+|---|---|---|
+| 01 | Soma dos números pares | `for`, `if`, `%`, acumulador numérico |
+| 02 | Conta números maiores que um limite | dois parâmetros, contador, `>` |
+| 03 | Maior número do array | troca vs. acumulação, valor inicial `numeros[0]` |
+| 04 | Média dos números | soma + divisão, `.length` como quantidade |
+| 05 | Soma de 1 até N | `i` como valor (não posição), `<=` |
+| 06 | Conta vogais | string com índice, operador `\|\|` |
+| 07 | Inverte texto | acumulador de texto `""`, `for` decrescente |
+| 08 | Verifica palíndromo | retorno booleano, `===` sem `if` |
+| 09 | Filtra pares em novo array | acumulador `[]`, `push` |
+| 10 | Conta ocorrências de um valor | `===` com número e texto |
 
-Recebe um array de números e devolve a soma apenas dos pares.
-somaPares([1, 2, 3, 4, 5, 6]) → 12
-somaPares([1, 3, 5]) → 0
-somaPares([]) → 0
+## Referência
 
+### Tipos de acumulador
 
-**Solução:** um acumulador iniciado em zero, um `for` percorrendo o array
-por índice, e um `if` usando o operador `%` para identificar os pares.
-Quando o resto da divisão por 2 é zero, o número é somado ao acumulador.
-O `return` fica fora do loop, para que a função só devolva o valor depois
-de percorrer todo o array.
+| Objetivo | Inicia com | Como adiciona |
+|---|---|---|
+| Somar valores | `0` | `resultado = resultado + x` |
+| Multiplicar | `1` | `resultado = resultado * x` |
+| Montar texto | `""` | `resultado = resultado + x` |
+| Montar array | `[]` | `resultado.push(x)` |
+| Contar ocorrências | `0` | `resultado = resultado + 1` |
+| Guardar campeão | `array[0]` | `resultado = array[i]` (troca) |
 
-**Conceitos:** `let` vs `const`, laço `for`, operador `%`, comparação
-`===`, acumulador.
+### As três partes do `for`
 
-### 02 — Conta números maiores que um limite
+```js
+for (let i = 0; i < n; i++)
+//      ①        ②      ③
+```
 
-Recebe um array de números e um limite, e devolve quantos números do
-array são maiores que esse limite.
+- ① roda uma vez, antes de tudo
+- ② testada antes de cada volta, inclusive a primeira
+- ③ roda depois de cada volta
 
-contaMaiores([1, 5, 8, 3, 10], 4) → 3
-contaMaiores([1, 2, 3], 10) → 0
-contaMaiores([], 5) → 0
+Decrescente: `for (let i = n - 1; i >= 0; i--)`
 
+### Posição vs. valor
 
-**Solução:** mesma estrutura do exercício anterior, com duas diferenças.
-A função recebe dois parâmetros, e o acumulador funciona como contador:
-soma 1 a cada número que passa na condição, em vez de somar o valor do
-número. A condição usa o operador `>` comparando o item atual com o
-limite.
+| Escrita | Significa |
+|---|---|
+| `i` | a posição |
+| `array[i]` | o valor naquela posição |
+| `array.length` | quantos itens existem |
 
-Com array vazio, `numeros.length` é 0 e a condição do `for` já começa
-falsa, então o loop não executa nenhuma vez e a função devolve 0.
+Última posição = `length - 1`, porque a contagem começa em 0.
 
-**Conceitos:** múltiplos parâmetros, contador vs. somador, operador `>`,
-caso de borda com array vazio.
+### Operadores
+
+| | |
+|---|---|
+| `=` | atribui |
+| `===` | compara (produz `true`/`false`) |
+| `%` | resto da divisão — `x % 2 === 0` é par |
+| `\|\|` | ou — verdadeiro se qualquer lado for |
+| `i++` | atalho para `i = i + 1` |
+
+### Regras aprendidas na prática
+
+- Parâmetro vem de fora; variável interna a função cria para si
+- Toda variável nova nasce com `let`
+- `return` dentro do `for` encerra na primeira volta
+- Array vazio: o `for` roda zero vezes, a condição já começa falsa
+- Sempre usar chaves `{ }`, mesmo com uma linha só
+- Rodar sem erro não significa estar certo — conferir o valor
